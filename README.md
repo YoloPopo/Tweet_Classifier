@@ -126,7 +126,7 @@ Each task includes:
 
 ### 3. Challenges Faced
 - **Preprocessing Complexity**: Balancing thorough cleaning with retaining useful information (e.g., hashtags).  
-- **Hardware Limitations**: Transformer fine-tuning required GPU acceleration for efficient training.  
+- **Hardware Limitations**: Transformer fine-tuning required GPU for training.  
 
 ---
 
