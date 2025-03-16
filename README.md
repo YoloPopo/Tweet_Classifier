@@ -5,8 +5,8 @@
 
 ---
 
-## Assignment Requirements Overview
-The assignment involves three main tasks:  
+## Overview
+The involves three main tasks:  
 1. **Traditional ML Models**: TF-IDF and Bag-of-Words with classifiers like Logistic Regression and SVM.  
 2. **Neural Networks**: Build and train RNN, LSTM, GRU, and CNN models from scratch.  
 3. **Fine-Tuned Transformers**: Adapt pre-trained models (DistilBERT, ELECTRA) for the task.  
