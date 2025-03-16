@@ -9,7 +9,7 @@
 The involves three main tasks:  
 1. **Traditional ML Models**: TF-IDF and Bag-of-Words with classifiers like Logistic Regression and SVM.  
 2. **Neural Networks**: Build and train RNN, LSTM, GRU, and CNN models from scratch.  
-3. **Fine-Tuned Transformers**: Adapt pre-trained models (DistilBERT, ELECTRA) for the task.  
+3. **Fine-Tuned Transformers**: Adapt pre-trained models (DistilBERT, MobileBERT, ELECTRA) for the task.  
 
 Each task includes:  
 - Preprocessing (tokenization, lemmatization, etc.)  
@@ -60,6 +60,7 @@ Each task includes:
 | Model       | Selection Rationale                                  | Fine-Tuning Strategy                     |  
 |-------------|------------------------------------------------------|------------------------------------------|  
 | **DistilBERT** | 40% smaller than BERT with 95% performance          | Layer-wise learning rate decay           |  
+| **MobileBERT** | 4x faster than BERT, inverted bottleneck            | Layer-wise learning rate decay           |  
 | **ELECTRA**    | Efficient pretraining via replaced token detection   | Frozen embeddings + tuned classification head |  
 
 ---
@@ -67,38 +68,38 @@ Each task includes:
 ## Repository Structure
 ```
 ├── Dataset/  
-│   ├── train.csv              # Training data (7,613 tweets)  
-│   ├── test.csv               # Test data (3,263 tweets)  
-│   └── sample_submission.csv  # Submission format  
+│   ├── train.csv                
+│   ├── test.csv                 
+│   └── sample_submission.csv  
 
 ├── Traditional Models/  
-│   ├── models.ipynb           # TF-IDF/BoW implementations  
-│   ├── bow_gb_submission.csv  # Gradient Boosting predictions  
-│   ├── bow_lr_submission.csv  # Logistic Regression predictions  
-│   ├── bow_mnb_submission.csv # Naive Bayes predictions  
-│   ├── bow_svm_submission.csv # SVM predictions  
-│   ├── tfidf_gb_submission.csv# Gradient Boosting predictions  
-│   ├── tfidf_lr_submission.csv# Logistic Regression predictions  
-│   ├── tfidf_mnb_submission.csv# Naive Bayes predictions  
-│   └── tfidf_svm_submission.csv# SVM predictions  
+│   ├── models.ipynb            
+│   ├── bow_gb_submission.csv    
+│   ├── bow_lr_submission.csv   
+│   ├── bow_mnb_submission.csv 
+│   ├── bow_svm_submission.csv  
+│   ├── tfidf_gb_submission.csv  
+│   ├── tfidf_lr_submission.csv
+│   ├── tfidf_mnb_submission.csv 
+│   └── tfidf_svm_submission.csv 
 
 ├── Neural Network Models/  
-│   ├── models.ipynb           # RNN/LSTM/CNN implementations  
-│   ├── CNN_submission.csv     # CNN predictions  
-│   ├── GRU_submission.csv     # GRU predictions  
-│   ├── LSTM_submission.csv    # LSTM predictions  
-│   └── RNN_submission.csv     # RNN predictions  
+│   ├── models.ipynb           
+│   ├── CNN_submission.csv     
+│   ├── GRU_submission.csv      
+│   ├── LSTM_submission.csv    
+│   └── RNN_submission.csv      
 
 ├── Tuned Existing Models/  
-│   ├── models.ipynb           # Transformer fine-tuning code  
-│   ├── distilbert_submission.csv # DistilBERT predictions  
-│   ├── mobilebert_submission.csv # MobileBERT predictions  
-│   └── electra_submission.csv    # ELECTRA predictions  
+│   ├── models.ipynb             
+│   ├── distilbert_submission.csv 
+│   ├── mobilebert_submission.csv   
+│   └── electra_submission.csv      
 ```
 
 ---
 
-## Results & Compliance with Requirements
+## Results
 ### Hyperparameter Tuning
 - **Traditional Models**: GridSearchCV with 5-fold stratified validation.  
 - **Neural Networks**: Keras Tuner for embedding dimensions, dropout rates, and layer sizes.  
@@ -107,18 +108,16 @@ Each task includes:
 ### Kaggle Performance
 | Model Type         | Best Val F1 | Kaggle F1* | Resource Usage |  
 |--------------------|-------------|------------|----------------|  
-| TF-IDF + SVM       | 0.778       | 0.752      | Low (CPU)      |  
-| CNN (scratch)      | 0.776       | 0.741      | Medium (GPU)   |  
-| **DistilBERT**     | **0.816**   | **0.789**  | High (GPU)     |  
-
-_Kaggle scores based on submissions_
+| TF-IDF + SVM       | 0.778       | 0.7971      | Low           |  
+| CNN (scratch)      | 0.776       | 0.7631     | Medium          |  
+| **DistilBERT**     | **0.816**   | **0.8235**  | High          |  
 
 ---
 
-## Conclusions (Assignment Requirement Coverage)
+## Conclusions
 ### 1. Best Model
-- **DistilBERT** achieved the highest F1-score (0.816) but required GPU resources.  
-- **TF-IDF + SVM** provided the best CPU performance (0.778 F1) and is suitable for resource-constrained environments.  
+- **DistilBERT** achieved the highest F1-score (0.8235) but required GPU resources.  
+- **TF-IDF + SVM** provided the best CPU performance (0.7971 F1) and is suitable for resource-constrained environments.  
 
 ### 2. Improvement Strategies
 - **Class Imbalance**: Use weighted loss functions or oversampling techniques like SMOTE.  
