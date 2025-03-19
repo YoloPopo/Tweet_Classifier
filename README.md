@@ -108,8 +108,8 @@ Each task includes:
 ### Kaggle Performance
 | Model Type         | Best Val F1 | Kaggle F1* | Resource Usage |  
 |--------------------|-------------|------------|----------------|  
-| TF-IDF + SVM       | 0.778       | 0.7971      | Low           |  
-| CNN (scratch)      | 0.776       | 0.7631     | Medium          |  
+| TF-IDF + SVM       | 0.7783       | 0.7971      | Low           |  
+| CNN (scratch)      | 0.7782       | 0.7631     | Medium          |  
 | **DistilBERT**     | **0.816**   | **0.8235**  | High          |  
 
 ---
